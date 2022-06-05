@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,700;1,100;1,400&display=swap');
+
+/* reset CSS */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 10px;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth; /* Fluido  */
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  min-height: 100vh; /* O que eu quero que preencha no viewport, primeira página fique total da pagina */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#presentation {
+  background-image: url(./imagens/fundo.png);
+  background-size: cover;
+  background-position: top center;
+  position: relative; /* Por causa dos demais dispositivos moveis  */
+  z-index: 1; /* Atribui um filtro no fundo, para suavisa a imagem */
+}
+
+#presentation h1 {
+  display: block;
+  width: fit-content;
+  font-size: 5rem; /* 50px */
+  position: relative;
+  color: transparent;
+  animation: text_reveal .5s ease forwards;
+  animation-delay: 1.5s;
+}
+
+/* Sempre referenciando com o child span */
+#presentation h1:nth-child(1){
+  animation-delay: .8s;
+}
+#presentation h1:nth-child(2){
+  animation-delay: 1.8s;
+}
+#presentation h1:nth-child(13){
+  animation-delay: 2.8s;
+}
+
+#presentation .cta {
+  display: inline-block;
+  padding: 10px 30px;
+  color: rgba(207, 205, 67, 0.856);
+  background-color: transparent;
+  border: 2px solid rgba(207, 205, 67, 0.856);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: .3rem;
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+#presentation .cta:hover {
+  color: #fff; /* TEXTO vai ficar com a cor branca */
+  font-weight: 700; /* o PESO da font vai para 700 */
+  background-color: rgba(207, 205, 67, 0.856);
+}
+
+#presentation h1 span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  animation: text_reveal_box 1s ease;
+  animation-delay: .5s;
+  background-color: rgba(207, 205, 67, 0.856);
+  border-radius: 4px;
+  opacity: .50;
+}
+
+/* Meu filho 1*/
+#presentation h1:nth-child(1) span {
+  animation-delay: .5s;
+}
+#presentation h1:nth-child(2) span {
+  animation-delay: 1.5s;
+}
+#presentation h1:nth-child(3) span {
+  animation-delay: 2.5s;
+}
+
+/* Colocar algo em cima, que seria o fundo - background */
+#presentation::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.2;
+  z-index: -1; /* POSICAO dele */
+}
+
+/* Animação - Keyframes, me leva do ponto A ou ponto B, navega essa coordenada esquerda para direita */
+@keyframes text_reveal {
+  100% {
+    color: #FFF;
+  }
+}
+@keyframes text_reveal_box {
+  50% {
+    width: 100%;
+    left: 0;
+  }
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
